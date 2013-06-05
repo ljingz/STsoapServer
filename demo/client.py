@@ -15,4 +15,3 @@ print client.service.method5({"param":["stnts", u"国际企业中心"]})
 print client.service.method6({"name":"stnts", "address":u"国际企业中心"})
 print client.service.method7()
 print client.service.method8()
-
