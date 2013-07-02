@@ -73,14 +73,18 @@ class STwsdlGenerate {
 		foreach($types as $name=>$type){
 			if(is_numeric($name)){
 				if(is_array($type)){
-					$complexType .= sprintf("<element name=\"%s\" minOccurs=\"0\" maxOccurs=\"unbounded\" nillable=\"true\">\r\n%s</element>\r\n", $defaultElementName, $this->buildComplexType($type));
+					$complexType .= sprintf("<element name=\"%s\" minOccurs=\"0\" maxOccurs=\"unbounded\" nillable=\"true\">\r\n%s</element>\r\n", $defaultElementName, $this->buildComplexType($type, null, $defaultElementName));
 				}else{
 					$complexType .= sprintf("<element name=\"%s\" minOccurs=\"0\" maxOccurs=\"unbounded\" nillable=\"true\" type=\"xsd:%s\"/>\r\n", $defaultElementName, $type);
 				}
 				break;
 			}else{
 				if(is_array($type)){
-					$complexType .= sprintf("<element name=\"%s\" minOccurs=\"0\" nillable=\"true\">\r\n%s</element>\r\n", $name, $this->buildComplexType($type));
+					if(count($type)==1&&is_array($type[0])){
+						$complexType .= sprintf("<element name=\"%s\" minOccurs=\"0\" maxOccurs=\"unbounded\" nillable=\"true\">\r\n%s</element>\r\n", $name, $this->buildComplexType($type[0], null, $defaultElementName));
+					}else{
+						$complexType .= sprintf("<element name=\"%s\" minOccurs=\"0\" nillable=\"true\">\r\n%s</element>\r\n", $name, $this->buildComplexType($type, null, $defaultElementName));
+					}
 				}else{
 					$complexType .= sprintf("<element name=\"%s\" minOccurs=\"0\" nillable=\"true\" type=\"xsd:%s\"/>\r\n", $name, $type);
 				}
