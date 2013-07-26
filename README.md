@@ -3,7 +3,6 @@
 
 STsoapServer类继承自SoapServer，用于生成wsdl文档，使用简单方便；
     
-    <?php
     require("STsoapServer/STsoapServer.class.php");
      
     class server {
@@ -28,7 +27,7 @@ STsoapServer类继承自SoapServer，用于生成wsdl文档，使用简单方便
 SoapServer类WSDL模式要求必须传入一个已存在的wsdl文档作为参数，STsoapServer会在某目录下生成wsdl文档，将地址作为参数传入；
 生成wsdl文件需要一些参数配置，有以下两个地方可以配置此参数：
 
-    实例化STsoapServer类时增加wsdl项：
+实例化STsoapServer类时增加wsdl项：
 
     new STsoapServer(array(
         "uri"=>"http://localhost/",
@@ -37,7 +36,7 @@ SoapServer类WSDL模式要求必须传入一个已存在的wsdl文档作为参�
         )
     ));
 
-    在类中定义wsdl属性：
+在类中定义wsdl属性：
 
     class server {
         public $wsdl = array(
@@ -47,7 +46,7 @@ SoapServer类WSDL模式要求必须传入一个已存在的wsdl文档作为参�
 
 ### 基本配置
 
-    每次调用服务都重新根据方法或函数来生成wsdl文件显然是极其低效的，STsoapServer默认会缓存wsdl文件，直到文件被手动删除，但在开发过程中这种行为会造成不便，STsoapServer允许配置关闭缓存)：
+每次调用服务都重新根据方法或函数来生成wsdl文件显然是极其低效的，STsoapServer默认会缓存wsdl文件，直到文件被手动删除，但在开发过程中这种行为会造成不便，STsoapServer允许配置关闭缓存)：
 
     class server {
         public $wsdl = array(
@@ -55,7 +54,7 @@ SoapServer类WSDL模式要求必须传入一个已存在的wsdl文档作为参�
         );
     }
 
-    WSDL文件的保存目录，缺省值为”/tmp/“：
+WSDL文件的保存目录，缺省值为”/tmp/“：
 
     class server {
         public $wsdl = array(
@@ -64,7 +63,7 @@ SoapServer类WSDL模式要求必须传入一个已存在的wsdl文档作为参�
         );
     }
 
-    soap服务名称，缺省值为类名称，不存在类则为”stnts”：
+soap服务名称，缺省值为类名称，不存在类则为”stnts”：
 
     class server {
         public $wsdl = array(
@@ -74,7 +73,7 @@ SoapServer类WSDL模式要求必须传入一个已存在的wsdl文档作为参�
         );
     }
 
-    soap服务地址，缺省值为当前url地址：
+soap服务地址，缺省值为当前url地址：
 
     class server {
         public $wsdl = array(
@@ -90,7 +89,7 @@ SoapServer类WSDL模式要求必须传入一个已存在的wsdl文档作为参�
 PHP为弱类型语言，程序无法自动分辨出参数与返回值的数据类型，在与其他语言进行服务调用的时候会出现不可预料的情况；
 在wsdl数组中添加方法或函数的同名项定义数据类型：
 
-    两个参数为数字，返回值为数字：
+两个参数为数字，返回值为数字：
 
     //function
     function method1($num1, $num2){
@@ -104,7 +103,7 @@ PHP为弱类型语言，程序无法自动分辨出参数与返回值的数据�
         )
     );
 
-    无参数，返回值为字符串：
+无参数，返回值为字符串：
 
     //function
     function method2(){
@@ -117,7 +116,7 @@ PHP为弱类型语言，程序无法自动分辨出参数与返回值的数据�
         )
     );
 
-    无参数，返回值为数组：
+无参数，返回值为数组：
 
     //function
     function method3(){
@@ -130,7 +129,7 @@ PHP为弱类型语言，程序无法自动分辨出参数与返回值的数据�
         )
     );
 
-    无参数，返回值为对象：
+无参数，返回值为对象：
 
     //function
     function method4(){
@@ -146,7 +145,7 @@ PHP为弱类型语言，程序无法自动分辨出参数与返回值的数据�
         )
     );
 
-    参数为数组，返回值为字符串：
+参数为数组，返回值为字符串：
 
     //function
     function method5($array){
@@ -160,7 +159,7 @@ PHP为弱类型语言，程序无法自动分辨出参数与返回值的数据�
         )
     );
 
-    注：SOAP规范中Array类型的兼容性很不好，使用了自定义类型来表示数组，以至于需要获取param属性才能获取到数组参数；
+注：SOAP规范中Array类型的兼容性很不好，使用了自定义类型来表示数组，以至于需要获取param属性才能获取到数组参数；
     参数为对象，返回值为字符串：
 
     //function
@@ -175,7 +174,7 @@ PHP为弱类型语言，程序无法自动分辨出参数与返回值的数据�
         )
     );
 
-    无参数，返回值为一个标准数据库列表：
+无参数，返回值为一个标准数据库列表：
 
     //function
     function method7(){
@@ -191,7 +190,7 @@ PHP为弱类型语言，程序无法自动分辨出参数与返回值的数据�
         )
     );
 
-    无参数，返回值为布尔类型：
+无参数，返回值为布尔类型：
 
     //function
     function method8(){
