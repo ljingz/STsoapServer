@@ -2,7 +2,8 @@
 -----------------------------------
 
 STsoapServer类继承自SoapServer，用于生成wsdl文档，使用简单方便；
-
+    
+    <?php
     require("STsoapServer/STsoapServer.class.php");
      
     class server {
