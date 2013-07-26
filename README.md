@@ -2,23 +2,23 @@
 
 STsoapServer类继承自SoapServer，用于生成wsdl文档，使用简单方便；
 
-require("STsoapServer/STsoapServer.class.php");
- 
-class server {
-    public function hello(){
-        return "hello word";
+    require("STsoapServer/STsoapServer.class.php");
+     
+    class server {
+        public function hello(){
+            return "hello word";
+        }
     }
-}
- 
-try{
-    $soap = new STsoapServer(array(
-        "uri"=>"http://localhost/"
-    ));
-    $soap->setClass("server");
-    $soap->handle();
-}catch(Exception $e){
-    echo $e->getMessage();
-}
+     
+    try{
+        $soap = new STsoapServer(array(
+            "uri"=>"http://localhost/"
+        ));
+        $soap->setClass("server");
+        $soap->handle();
+    }catch(Exception $e){
+        echo $e->getMessage();
+    }
 
 高级
 
