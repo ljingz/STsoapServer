@@ -45,7 +45,7 @@ SoapServer类WSDL模式要求必须传入一个已存在的wsdl文档作为参�
 基本配置
 
     每次调用服务都重新根据方法或函数来生成wsdl文件显然是极其低效的，STsoapServer默认会缓存wsdl文件，直到文件被手动删除，但在开发过程中这种行
-    为会造成不便，STsoapServer允许配置关闭缓存1)：
+    为会造成不便，STsoapServer允许配置关闭缓存)：
 
     class server {
         public $wsdl = array(
