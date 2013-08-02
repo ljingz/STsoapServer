@@ -77,27 +77,36 @@ class STsoapServer extends SoapServer {
 	public function handle($request=null){
 		//获取wsdl文件
 		$wsdlFile = $this->getWsdlFile();
-		//调用SoapServer
-		parent::__construct($wsdlFile, $this->options);
-		if($this->functions){
-			foreach($this->functions as $function){
-				if($function instanceof ReflectionFunction){
-					parent::addFunction($function->getName());
+		//删除wsdl缓存
+		if(isset($_GET["clearCache"])){
+			if(unlink($wsdlFile)){
+				echo "successfully cleared the cache.";
+			}else{
+				echo "clear the cache fails.";
+			}
+		}else{
+			//调用SoapServer
+			parent::__construct($wsdlFile, $this->options);
+			if($this->functions){
+				foreach($this->functions as $function){
+					if($function instanceof ReflectionFunction){
+						parent::addFunction($function->getName());
+					}
 				}
 			}
-		}
-		if($this->object){
-			parent::setObject($this->object);
-		}
-		if($request===null){
-			global $HTTP_RAW_POST_DATA;
-			if(isset($HTTP_RAW_POST_DATA)) {
-				$request = $HTTP_RAW_POST_DATA;
-			}else {
-				$request = file_get_contents("php://input");
+			if($this->object){
+				parent::setObject($this->object);
 			}
+			if($request===null){
+				global $HTTP_RAW_POST_DATA;
+				if(isset($HTTP_RAW_POST_DATA)) {
+					$request = $HTTP_RAW_POST_DATA;
+				}else {
+					$request = file_get_contents("php://input");
+				}
+			}
+			parent::handle($request);
 		}
-		parent::handle($request);
 	}
 	
 	protected function getWsdlFile(){
