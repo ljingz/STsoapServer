@@ -103,7 +103,8 @@ class server {
 PHP为弱类型语言，程序无法自动分辨出参数与返回值的数据类型，在与其他语言进行服务调用的时候会出现不可预料的情况；
 在wsdl数组中添加方法或函数的同名项定义数据类型：
 
-两个参数为数字，返回值为数字：
+> 两个参数为数字，返回值为数字：
+
 ```php
 //function
 function method1($num1, $num2){
@@ -118,7 +119,8 @@ $wsdl = array(
 );
 ```
 
-无参数，返回值为字符串：
+> 无参数，返回值为字符串：
+
 ```php
 //function
 function method2(){
@@ -132,7 +134,8 @@ $wsdl = array(
 );
 ```
 
-无参数，返回值为数组：
+> 无参数，返回值为数组：
+
 ```php
 //function
 function method3(){
@@ -146,7 +149,8 @@ $wsdl = array(
 );
 ```
 
-无参数，返回值为对象：
+> 无参数，返回值为对象：
+
 ```php
 //function
 function method4(){
@@ -163,7 +167,8 @@ $wsdl = array(
 );
 ```
 
-参数为数组，返回值为字符串：
+> 参数为数组，返回值为字符串：
+
 ```php
 //function
 function method5($array){
@@ -184,7 +189,8 @@ $wsdl = array(
 ***/
 ```
     
-参数为对象，返回值为字符串：
+> 参数为对象，返回值为字符串：
+
 ```php
 //function
 function method6($object){
@@ -199,7 +205,8 @@ $wsdl = array(
 );
 ```
 
-无参数，返回值为一个标准数据库列表：
+> 无参数，返回值为一个标准数据库列表：
+
 ```php
 //function
 function method7(){
@@ -216,7 +223,8 @@ $wsdl = array(
 );
 ```
 
-无参数，返回值为布尔类型：
+> 无参数，返回值为布尔类型：
+
 ```php
 //function
 function method8(){
